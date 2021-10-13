@@ -1,5 +1,5 @@
 C_SOURCES = $(wildcard src/*.cpp) $(wildcard src/**/*.cpp) $(wildcard src/**/**/*.cpp)
-HEADERS = $(wildcard src/*.h) $(wildcard src/**/*.h) $(wildcard src/**/**/*.h)
+HEADERS = $(wildcard src/*.hpp) $(wildcard src/**/*.hpp) $(wildcard src/**/**/*.hpp)
 OBJ = ${patsubst src/%.c,obj/%.o,$(C_SOURCES)}
 OUTPUT = bin/draughts.exe
 
