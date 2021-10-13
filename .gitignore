@@ -1,0 +1,8 @@
+# Ignore compiled files
+bin/
+
+# Ignore object files
+obj/
+
+# Ignore VS Code config
+.vscode/
