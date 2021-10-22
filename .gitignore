@@ -4,5 +4,7 @@ bin/
 # Ignore object files
 obj/
 
-# Ignore VS Code config
+# Ignore VS Code and CLion config
 .vscode/
+.idea/
+cmake-build-debug/
