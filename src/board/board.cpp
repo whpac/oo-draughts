@@ -4,7 +4,7 @@
 Board::Board(int size){
     this->boardSize = size;
 
-    for(int i = 0; i < size; i++){
+    for(int i = 0; i < size * size; i++){
         this->board.push_back(new Pawn(this, no_pawn));
     }
 }
