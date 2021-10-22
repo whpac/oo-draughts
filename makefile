@@ -20,19 +20,19 @@ obj/%.o: src/%.cpp ${HEADERS}
 
 clean:
 # Windows:
-#	rmdir /q /s obj
+	rmdir /q /s obj
 # UNIX:
-	rm -rf obj
+#	rm -rf obj
 
 # Ignores errors when bin and obj directories exist
 # 2> NUL causes the error message to disappear forever in /dev/null
 # || (exit 0) fools the shell that the command was successful
 folders:
 # Windows:
-#	mkdir obj 2> NUL || (exit 0)
-#	mkdir bin 2> NUL || (exit 0)
-#	xcopy src obj /t /e
+	mkdir obj 2> NUL || (exit 0)
+	mkdir bin 2> NUL || (exit 0)
+	xcopy src obj /t /e
 # UNIX:
-	mkdir obj 2> /dev/null || (exit 0)
-	mkdir bin 2> /dev/null || (exit 0)
-	cd src && find . -type d -exec mkdir -p -- ../obj/{} \;
+#	mkdir obj 2> /dev/null || (exit 0)
+#	mkdir bin 2> /dev/null || (exit 0)
+#	cd src && find . -type d -exec mkdir -p -- ../obj/{} \;
