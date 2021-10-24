@@ -36,6 +36,7 @@ void Board::setPawnAt(Position pos, shared_ptr<Pawn> pawn){
 bool Board::movePawn(Position from, Position to) {
     shared_ptr<Pawn> pawn = this->getPawnAt(from);
     if(pawn->getColor() == no_pawn) return false;
+    if(!this->isPlayableField(to)) return false;
 
     if(!pawn->canBeMoved(from, to)) return false;
 
