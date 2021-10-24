@@ -1,10 +1,12 @@
 #include "board.hpp"
+#include "pieces/normal_pawn.hpp"
 
 Board::Board(int size){
     this->boardSize = size;
 
     for(int i = 0; i < size * size; i++){
-        this->board.push_back(make_shared<Pawn>(Pawn(this, no_pawn)));
+        shared_ptr<Pawn> p = make_shared<NormalPawn>(this, no_pawn);
+        this->board.push_back(p);
     }
 }
 
@@ -16,7 +18,7 @@ int Board::getSize() const{
 
 shared_ptr<Pawn> Board::getPawnAt(Position pos){
     if(!this->isPositionWithinBounds(pos)){
-        return make_shared<Pawn>(this, no_pawn);
+        return make_shared<NormalPawn>(this, no_pawn);
     }
 
     int idx = this->positionToIndex(pos);
@@ -35,8 +37,10 @@ bool Board::movePawn(Position from, Position to) {
     shared_ptr<Pawn> pawn = this->getPawnAt(from);
     if(pawn->getColor() == no_pawn) return false;
 
+    if(!pawn->canBeMoved(from, to)) return false;
+
     this->setPawnAt(to, pawn);
-    this->setPawnAt(from, make_shared<Pawn>(this, no_pawn));
+    this->setPawnAt(from, make_shared<NormalPawn>(this, no_pawn));
     return true;
 }
 

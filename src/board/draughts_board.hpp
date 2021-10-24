@@ -4,11 +4,11 @@
 class DraughtsBoard;
 
 #include "board.hpp"
+#include "pieces/normal_pawn.hpp"
 
 class DraughtsBoard : public Board {
 
-public:
-    DraughtsBoard(int size);
+    public: explicit DraughtsBoard(int size);
 
     /** Initializes the board with pawns */
     protected: void initialize();
