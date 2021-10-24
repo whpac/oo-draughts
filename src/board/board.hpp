@@ -48,6 +48,12 @@ public:
      * @param pos The position
      */
     protected: bool isPositionWithinBounds(Position pos) const;
+
+    /**
+     * Checks whether the given field is legal in the game
+     * @param pos The position
+     */
+    protected: virtual bool isPlayableField(Position pos);
 };
 
 #endif

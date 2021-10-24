@@ -13,8 +13,11 @@ public:
     /** Initializes the board with pawns */
     protected: void initialize();
 
-    /** Checks whether the given field is legal in the game */
-    protected: bool isPlayableField(Position pos);
+    /**
+     * Checks whether the given field is legal in the game
+     * @param pos The position
+     */
+    protected: bool isPlayableField(Position pos) override;
 };
 
 #endif

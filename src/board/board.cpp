@@ -45,3 +45,7 @@ bool Board::isPositionWithinBounds(Position pos) const{
 
     return true;
 }
+
+bool Board::isPlayableField(Position pos) {
+    return this->isPositionWithinBounds(pos);
+}
