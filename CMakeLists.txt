@@ -8,5 +8,5 @@ add_executable(draughts2 src/main.cpp
         src/board/board.cpp src/board/board.hpp
         src/board/draughts_board.cpp src/board/draughts_board.hpp
         src/board/position.cpp src/board/position.hpp
-        src/board/pieces/pawn.cpp src/board/pieces/pawn.hpp)
+        src/board/pieces/pawn.cpp src/board/pieces/pawn.hpp src/board/pieces/normal_pawn.cpp src/board/pieces/normal_pawn.hpp)
 
