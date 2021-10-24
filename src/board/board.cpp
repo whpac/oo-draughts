@@ -16,7 +16,7 @@ int Board::getSize() const{
 
 shared_ptr<Pawn> Board::getPawnAt(Position pos){
     if(!this->isPositionWithinBounds(pos)){
-        return make_shared<Pawn>(Pawn(this, no_pawn));
+        return make_shared<Pawn>(this, no_pawn);
     }
 
     int idx = this->positionToIndex(pos);
@@ -24,11 +24,20 @@ shared_ptr<Pawn> Board::getPawnAt(Position pos){
 }
 
 
-void Board::setPawnAt(Position pos, Pawn& pawn){
+void Board::setPawnAt(Position pos, shared_ptr<Pawn> pawn){
     if(!this->isPositionWithinBounds(pos)) return;
 
     int idx = this->positionToIndex(pos);
-    this->board[idx] = make_shared<Pawn>(pawn);
+    this->board[idx] = move(pawn);
+}
+
+bool Board::movePawn(Position from, Position to) {
+    shared_ptr<Pawn> pawn = this->getPawnAt(from);
+    if(pawn->getColor() == no_pawn) return false;
+
+    this->setPawnAt(to, pawn);
+    this->setPawnAt(from, make_shared<Pawn>(this, no_pawn));
+    return true;
 }
 
 

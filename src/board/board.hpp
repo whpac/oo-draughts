@@ -19,23 +19,31 @@ public:
      * Creates a new instance of board with a specified size.
      * @param size The length of board side
      */
-    explicit Board(int size);
+    public: explicit Board(int size);
 
     /** Returns the board size */
-    int getSize() const;
+    public: int getSize() const;
 
     /**
      * Returns a pawn at the specified position.
      * @param pos The position
      */
-    shared_ptr<Pawn> getPawnAt(Position pos);
+    public: shared_ptr<Pawn> getPawnAt(Position pos);
 
     /**
      * Places the pawn at the specified position.
      * @param pos The position
      * @param pawn The pawn
      */
-    void setPawnAt(Position pos, Pawn& pawn);
+    protected: void setPawnAt(Position pos, shared_ptr<Pawn> pawn);
+
+    /**
+     * Moves pawn between fields
+     * @param from The source field
+     * @param to The destination field
+     * @return Whether the move was successful
+     */
+    public: virtual bool movePawn(Position from, Position to);
 
     /**
      * Converts a `Position` object into an one-dimensional index
