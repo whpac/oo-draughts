@@ -7,6 +7,11 @@ class Position {
 
     public:
     /**
+     * Creates a new instance referring to point (-1, -1)
+     */
+    Position();
+
+    /**
      * Creates a new instance of `Position`.
      * 
      * @param row The 'row' coordinate
