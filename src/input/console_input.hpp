@@ -2,7 +2,6 @@
 #define CONSOLE_INPUT_H
 
 #include "commands/command.hpp"
-#include "commands/move_command.hpp"
 
 class ConsoleInput {
 
