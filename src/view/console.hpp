@@ -1,5 +1,5 @@
-#ifndef CONSOLE_H
-#define CONSOLE_H
+#ifndef VIEW_CONSOLE_H
+#define VIEW_CONSOLE_H
 
 #include "../board/board.hpp"
 
