@@ -1,9 +1,9 @@
-#ifndef VIEW_CONSOLE_H
-#define VIEW_CONSOLE_H
+#ifndef CONSOLE_VIEW_H
+#define CONSOLE_VIEW_H
 
 #include "../board/board.hpp"
 
-class Console {
+class ConsoleView {
 
 public:
     void displayBoard(Board& board);

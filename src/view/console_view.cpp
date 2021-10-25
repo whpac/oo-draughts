@@ -1,7 +1,7 @@
-#include "console.hpp"
+#include "console_view.hpp"
 #include<cstdio>
 
-void Console::displayBoard(Board& board){
+void ConsoleView::displayBoard(Board& board){
     int size = board.getSize();
     for(int row = 0; row < size; row++){
         for(int col = 0; col < size; col++){
