@@ -23,10 +23,13 @@ public:
      * @param from The beginning position of the move
      * @param to The ending position of the move
      */
-    virtual bool canBeMoved(Position from, Position to) = 0;
+    public: virtual bool canBeMoved(Position from, Position to) = 0;
 
     /** Returns the pawn color */
-    PawnColor getColor();
+    public: PawnColor getColor();
+
+    /** Checks whether the passed pawn represents an empty field */
+    public: static bool isEmpty(Pawn& pawn);
 };
 
 #endif
