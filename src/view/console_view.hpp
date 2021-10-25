@@ -5,8 +5,11 @@
 
 class ConsoleView {
 
-public:
-    void displayBoard(Board& board);
+    /**
+     * Displays the board
+     * @param board The board to display
+     */
+    public: void displayBoard(Board& board);
 
 };
 
