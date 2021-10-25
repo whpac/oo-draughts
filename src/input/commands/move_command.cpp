@@ -7,7 +7,7 @@ MoveCommand::MoveCommand(Position from, Position to) : Command() {
 }
 
 MoveCommand::MoveCommand(Command cmd) : Command(cmd) {
-    if(this->type != CommandType::move) return;
+    if(cmd.getType() != CommandType::move) return;
 }
 
 Position MoveCommand::getFrom() {
