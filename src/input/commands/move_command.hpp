@@ -10,8 +10,10 @@ class MoveCommand : public Command {
 
     public: explicit MoveCommand(Command cmd);
 
+    /** Returns the origin of the move */
     public: Position getFrom();
 
+    /** Returns the destination of the move */
     public: Position getTo();
 };
 

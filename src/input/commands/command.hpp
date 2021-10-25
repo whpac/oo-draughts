@@ -15,6 +15,7 @@ class Command {
     protected: Position from;
     protected: Position to;
 
+    /** Returns the command type */
     public: CommandType getType();
 };
 

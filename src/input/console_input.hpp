@@ -5,6 +5,9 @@
 
 class ConsoleInput {
 
+    /**
+     * Retrieves the command from the user
+     */
     public: Command getCommand();
 };
 
