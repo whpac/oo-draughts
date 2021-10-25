@@ -6,7 +6,8 @@
 enum CommandType {
     unknown,
     move,
-    undo
+    undo,
+    quit
 };
 
 class Command {
