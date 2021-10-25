@@ -2,6 +2,7 @@
 #define NORMAL_PAWN_H
 
 #include "pawn.hpp"
+#include<cstdlib>
 
 class NormalPawn : public Pawn {
 
