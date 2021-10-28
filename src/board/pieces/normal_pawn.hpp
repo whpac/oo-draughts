@@ -14,6 +14,11 @@ class NormalPawn : public Pawn {
     public: NormalPawn(Board* board, PawnColor color);
 
     public: bool canBeMoved(Position from, Position to) override;
+
+    /**
+     * Converts the pawn into the PawnPtr
+     */
+    public: PawnPtr toPtr();
 };
 
 #endif

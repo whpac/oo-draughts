@@ -11,7 +11,7 @@ void DraughtsBoard::initialize(){
         for(int col = 0; col < this->boardSize; col++){
             if(!this->isPlayableField(Position(row, col))) continue;
             NormalPawn p(this, white);
-            this->setPawnAt(Position(row, col), make_shared<NormalPawn>(p));
+            this->setPawnAt(Position(row, col), p.toPtr());
         }
     }
 
@@ -20,7 +20,7 @@ void DraughtsBoard::initialize(){
         for(int col = 0; col < this->boardSize; col++){
             if(!this->isPlayableField(Position(row, col))) continue;
             NormalPawn p(this, black);
-            this->setPawnAt(Position(row, col), make_shared<NormalPawn>(p));
+            this->setPawnAt(Position(row, col), p.toPtr());
         }
     }
 }

@@ -39,3 +39,7 @@ bool NormalPawn::canBeMoved(Position from, Position to) {
 
     return true;
 }
+
+PawnPtr NormalPawn::toPtr() {
+    return make_shared<NormalPawn>(*this);
+}
