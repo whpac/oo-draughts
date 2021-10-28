@@ -1,6 +1,8 @@
 #ifndef PAWN_H
 #define PAWN_H
 
+#define PawnPtr std::shared_ptr<Pawn>
+
 class Pawn;
 
 #include "../board.hpp"
@@ -13,8 +15,8 @@ enum PawnColor {
 };
 
 class Pawn {
-    protected: PawnColor color;
-    protected: Board* board;
+    protected: PawnColor color = no_pawn;
+    protected: Board* board = nullptr;
 
 public:
     /**
