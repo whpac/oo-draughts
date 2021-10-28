@@ -1,11 +1,11 @@
 #include "board.hpp"
-#include "pieces/normal_pawn.hpp"
+#include "pieces/empty_field.hpp"
 
 Board::Board(int size){
     this->boardSize = size;
 
     for(int i = 0; i < size * size; i++){
-        PawnPtr p = make_shared<NormalPawn>(this, no_pawn);
+        PawnPtr p = EmptyField::makePtr();
         this->board.push_back(p);
     }
 }
@@ -18,7 +18,7 @@ int Board::getSize() const{
 
 PawnPtr Board::getPawnAt(Position pos){
     if(!this->isPositionWithinBounds(pos)){
-        return make_shared<NormalPawn>(this, no_pawn);
+        return EmptyField::makePtr();
     }
 
     int idx = this->positionToIndex(pos);
@@ -41,7 +41,7 @@ bool Board::movePawn(Position from, Position to) {
     if(!pawn->canBeMoved(from, to)) return false;
 
     this->setPawnAt(to, pawn);
-    this->setPawnAt(from, make_shared<NormalPawn>(this, no_pawn));
+    this->setPawnAt(from, EmptyField::makePtr());
     return true;
 }
 

@@ -1,4 +1,5 @@
 #include "draughts_board.hpp"
+#include "pieces/empty_field.hpp"
 
 DraughtsBoard::DraughtsBoard(int size) : Board(size) {
     this->initialize();
@@ -45,6 +46,6 @@ void DraughtsBoard::killPawnsAlongMove(Position from, Position to) {
                 from.getRow() + i * (r_offset > 0 ? 1 : -1),
                 from.getCol() + i * (c_offset > 0 ? 1 : -1)
                 );
-        this->setPawnAt(middle, make_shared<NormalPawn>(this, no_pawn));
+        this->setPawnAt(middle, EmptyField::makePtr());
     }
 }
