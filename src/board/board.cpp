@@ -5,7 +5,7 @@ Board::Board(int size){
     this->boardSize = size;
 
     for(int i = 0; i < size * size; i++){
-        shared_ptr<Pawn> p = make_shared<NormalPawn>(this, no_pawn);
+        PawnPtr p = make_shared<NormalPawn>(this, no_pawn);
         this->board.push_back(p);
     }
 }
@@ -16,7 +16,7 @@ int Board::getSize() const{
 }
 
 
-shared_ptr<Pawn> Board::getPawnAt(Position pos){
+PawnPtr Board::getPawnAt(Position pos){
     if(!this->isPositionWithinBounds(pos)){
         return make_shared<NormalPawn>(this, no_pawn);
     }
@@ -26,7 +26,7 @@ shared_ptr<Pawn> Board::getPawnAt(Position pos){
 }
 
 
-void Board::setPawnAt(Position pos, shared_ptr<Pawn> pawn){
+void Board::setPawnAt(Position pos, PawnPtr pawn){
     if(!this->isPositionWithinBounds(pos)) return;
 
     int idx = this->positionToIndex(pos);
@@ -34,7 +34,7 @@ void Board::setPawnAt(Position pos, shared_ptr<Pawn> pawn){
 }
 
 bool Board::movePawn(Position from, Position to) {
-    shared_ptr<Pawn> pawn = this->getPawnAt(from);
+    PawnPtr pawn = this->getPawnAt(from);
     if(pawn->getColor() == no_pawn) return false;
     if(!this->isPlayableField(to)) return false;
 

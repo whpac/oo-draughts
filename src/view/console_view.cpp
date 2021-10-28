@@ -5,7 +5,7 @@ void ConsoleView::displayBoard(Board& board){
     int size = board.getSize();
     for(int row = 0; row < size; row++){
         for(int col = 0; col < size; col++){
-            shared_ptr<Pawn> p = board.getPawnAt(Position(row, col));
+            PawnPtr p = board.getPawnAt(Position(row, col));
 
             switch(p->getColor()){
                 case white:

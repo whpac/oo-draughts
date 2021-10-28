@@ -12,7 +12,7 @@ using namespace std;
 
 class Board {
     protected: int boardSize;
-    protected: vector<shared_ptr<Pawn>> board;
+    protected: vector<PawnPtr> board;
 
 public:
     /**
@@ -28,14 +28,14 @@ public:
      * Returns a pawn at the specified position.
      * @param pos The position
      */
-    public: shared_ptr<Pawn> getPawnAt(Position pos);
+    public: PawnPtr getPawnAt(Position pos);
 
     /**
      * Places the pawn at the specified position.
      * @param pos The position
      * @param pawn The pawn
      */
-    protected: void setPawnAt(Position pos, shared_ptr<Pawn> pawn);
+    protected: void setPawnAt(Position pos, PawnPtr pawn);
 
     /**
      * Moves pawn between fields
