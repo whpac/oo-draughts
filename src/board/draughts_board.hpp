@@ -18,6 +18,15 @@ class DraughtsBoard : public Board {
      * @param pos The position
      */
     protected: bool isPlayableField(Position pos) override;
+
+    public: bool movePawn(Position from, Position to) override;
+
+    /**
+     * Kills all pawns along the move
+     * @param from The beginning of the move
+     * @param to The end of the move
+     */
+    protected: void killPawnsAlongMove(Position from, Position to);
 };
 
 #endif

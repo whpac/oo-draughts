@@ -28,3 +28,23 @@ bool DraughtsBoard::isPlayableField(Position pos){
     if(!this->isPositionWithinBounds(pos)) return false;
     return (pos.getRow() + pos.getCol()) % 2 == 1;
 }
+
+bool DraughtsBoard::movePawn(Position from, Position to) {
+    if(!Board::movePawn(from, to)) return false;
+    this->killPawnsAlongMove(from, to);
+    return true;
+}
+
+void DraughtsBoard::killPawnsAlongMove(Position from, Position to) {
+    int r_offset = to.getRow() - from.getRow();
+    int c_offset = to.getCol() - from.getCol();
+
+    // Skip both ends of the move
+    for(int i = 1; i < abs(r_offset); i++){
+        Position middle(
+                from.getRow() + i * (r_offset > 0 ? 1 : -1),
+                from.getCol() + i * (c_offset > 0 ? 1 : -1)
+                );
+        this->setPawnAt(middle, make_shared<NormalPawn>(this, no_pawn));
+    }
+}
