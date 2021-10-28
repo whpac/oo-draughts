@@ -13,11 +13,24 @@ bool NormalPawn::canBeMoved(Position from, Position to) {
     if(abs(d_row) != abs(d_col)) return false;
 
     // Ensure that the destination field is empty
-    shared_ptr<Pawn> dest = this->board->getPawnAt(to);
+    PawnPtr dest = this->board->getPawnAt(to);
     if(!Pawn::isEmpty(*dest)) return false;
 
-    if(abs(d_row) > 1){
-        // Attempt to kill
+    // On no account can a normal pawn travel more than two fields
+    if(abs(d_row) > 2) return false;
+
+    // Attempt to kill - kills can be performed backwards
+    if(abs(d_row) == 2){
+        Position middle(
+                (from.getRow() + to.getRow()) / 2,
+                (from.getCol() + to.getCol()) / 2
+                );
+        PawnPtr killed_pawn = this->board->getPawnAt(middle);
+
+        // Can kill only opponent's pawns
+        if(Pawn::isEmpty(*killed_pawn)) return false;
+        if(killed_pawn->getColor() == this->color) return false;
+        return true;
     }
 
     // Allow only forward moves
