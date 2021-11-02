@@ -49,6 +49,8 @@ bool Board::movePawn(Position from, Position to) {
     }
     this->setPawnAt(from, EmptyField::makePtr());
 
+    this->nextPlayer = Pawn::getOppositeColor(pawn->getColor());
+
     return true;
 }
 
@@ -82,4 +84,8 @@ int Board::countPawnsOfColor(PawnColor color) {
         }
     }
     return count;
+}
+
+PawnColor Board::getNextPlayer() {
+    return this->nextPlayer;
 }

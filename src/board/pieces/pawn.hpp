@@ -30,9 +30,6 @@ public:
     /** Returns the pawn color */
     public: PawnColor getColor();
 
-    /** Checks whether the passed pawn represents an empty field */
-    public: static bool isEmpty(Pawn& pawn);
-
     /**
      * Checks whether the pawn can transform into another
      * @param pos The current position of the pawn
@@ -41,6 +38,15 @@ public:
 
     /** Gets a pawn that this one can transform into */
     public: virtual PawnPtr getTransform() = 0;
+
+    /** Checks whether the passed pawn represents an empty field */
+    public: static bool isEmpty(Pawn& pawn);
+
+    /**
+     * Returns an opposite color
+     * @param color Color
+     */
+    public: static PawnColor getOppositeColor(PawnColor color);
 };
 
 #endif

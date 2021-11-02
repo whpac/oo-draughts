@@ -13,6 +13,7 @@ using namespace std;
 class Board {
     protected: int boardSize;
     protected: vector<PawnPtr> board;
+    protected: PawnColor nextPlayer = PawnColor::white;
 
 public:
     /**
@@ -68,6 +69,9 @@ public:
      * @param color The color of pawns to be counted
      */
     public: int countPawnsOfColor(PawnColor color);
+
+    /** Returns the color of the next player */
+    public: PawnColor getNextPlayer();
 };
 
 #endif
