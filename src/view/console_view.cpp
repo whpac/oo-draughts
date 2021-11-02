@@ -24,4 +24,5 @@ void ConsoleView::displayBoard(Board& board){
 
     printf("WHITE: %d\n", board.countPawnsOfColor(white));
     printf("BLACK: %d\n", board.countPawnsOfColor(black));
+    printf("Next player: %s\n", board.getNextPlayer() == white ? "WHITE" : "BLACK");
 }
