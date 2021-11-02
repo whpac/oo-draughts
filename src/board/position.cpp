@@ -10,10 +10,18 @@ Position::Position(int row, int col){
     this->col = col;
 }
 
-int Position::getRow(){
+int Position::getRow() const{
     return this->row;
 }
 
-int Position::getCol(){
+int Position::getCol() const{
     return this->col;
+}
+
+bool Position::operator==(Position p) const {
+    return this->row == p.row && this->col == p.col;
+}
+
+bool Position::operator!=(Position p) const {
+    return this->row != p.row || this->col != p.col;
 }

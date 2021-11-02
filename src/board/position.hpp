@@ -20,10 +20,13 @@ class Position {
     Position(int row, int col);
 
     /** Returns the 'row' coordinate */
-    int getRow();
+    int getRow() const;
 
     /** Returns the 'column' coordinate */
-    int getCol();
+    int getCol() const;
+
+    bool operator==(Position p) const;
+    bool operator!=(Position p) const;
 };
 
 #endif
