@@ -13,6 +13,10 @@ class EmptyField : public Pawn {
      * Creates an instance of EmptyField wrapped as PawnPtr
      */
     public: static PawnPtr makePtr();
+
+    public: bool canTransform(Position pos) override;
+
+    public: PawnPtr getTransform() override;
 };
 
 #endif

@@ -32,6 +32,15 @@ public:
 
     /** Checks whether the passed pawn represents an empty field */
     public: static bool isEmpty(Pawn& pawn);
+
+    /**
+     * Checks whether the pawn can transform into another
+     * @param pos The current position of the pawn
+     */
+    public: virtual bool canTransform(Position pos) = 0;
+
+    /** Gets a pawn that this one can transform into */
+    public: virtual PawnPtr getTransform() = 0;
 };
 
 #endif

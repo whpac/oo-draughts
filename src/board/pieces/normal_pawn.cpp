@@ -1,4 +1,5 @@
 #include "normal_pawn.hpp"
+#include "empty_field.hpp"
 
 NormalPawn::NormalPawn(Board *board, PawnColor color) {
     this->board = board;
@@ -42,4 +43,14 @@ bool NormalPawn::canBeMoved(Position from, Position to) {
 
 PawnPtr NormalPawn::toPtr() {
     return make_shared<NormalPawn>(*this);
+}
+
+bool NormalPawn::canTransform(Position pos) {
+    if(this->color == black && pos.getRow() == 0) return true;
+    if(this->color == white && pos.getRow() == this->board->getSize() - 1) return true;
+    return false;
+}
+
+PawnPtr NormalPawn::getTransform() {
+    return EmptyField::makePtr();
 }

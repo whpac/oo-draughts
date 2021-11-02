@@ -41,8 +41,14 @@ bool Board::movePawn(Position from, Position to) {
 
     if(!pawn->canBeMoved(from, to)) return false;
 
-    this->setPawnAt(to, pawn);
+    if(pawn->canTransform(to)){
+        PawnPtr new_pawn = pawn->getTransform();
+        this->setPawnAt(to, new_pawn);
+    }else{
+        this->setPawnAt(to, pawn);
+    }
     this->setPawnAt(from, EmptyField::makePtr());
+
     return true;
 }
 

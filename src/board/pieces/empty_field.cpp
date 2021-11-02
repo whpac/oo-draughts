@@ -11,3 +11,11 @@ bool EmptyField::canBeMoved(Position from, Position to) {
 PawnPtr EmptyField::makePtr() {
     return std::make_shared<EmptyField>();
 }
+
+bool EmptyField::canTransform(Position pos) {
+    return false;
+}
+
+PawnPtr EmptyField::getTransform() {
+    return std::make_shared<EmptyField>(*this);
+}

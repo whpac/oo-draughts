@@ -19,6 +19,10 @@ class NormalPawn : public Pawn {
      * Converts the pawn into the PawnPtr
      */
     public: PawnPtr toPtr();
+
+    public: bool canTransform(Position pos) override;
+
+    public: PawnPtr getTransform() override;
 };
 
 #endif
