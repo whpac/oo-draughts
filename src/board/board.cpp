@@ -36,6 +36,8 @@ void Board::setPawnAt(Position pos, PawnPtr pawn){
 
 bool Board::movePawn(Position from, Position to) {
     PawnPtr pawn = this->getPawnAt(from);
+    if(pawn->getColor() != this->nextPlayer) return false;
+
     if(pawn->getColor() == no_pawn) return false;
     if(!this->isPlayableField(to)) return false;
 
