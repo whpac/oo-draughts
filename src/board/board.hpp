@@ -62,6 +62,12 @@ public:
      * @param pos The position
      */
     protected: virtual bool isPlayableField(Position pos);
+
+    /**
+     * Counts pawns of the specified color
+     * @param color The color of pawns to be counted
+     */
+    public: int countPawnsOfColor(PawnColor color);
 };
 
 #endif

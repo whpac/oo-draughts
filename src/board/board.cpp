@@ -33,6 +33,7 @@ void Board::setPawnAt(Position pos, PawnPtr pawn){
     this->board[idx] = move(pawn);
 }
 
+
 bool Board::movePawn(Position from, Position to) {
     PawnPtr pawn = this->getPawnAt(from);
     if(pawn->getColor() == no_pawn) return false;
@@ -60,6 +61,19 @@ bool Board::isPositionWithinBounds(Position pos) const{
     return true;
 }
 
+
 bool Board::isPlayableField(Position pos) {
     return this->isPositionWithinBounds(pos);
+}
+
+
+int Board::countPawnsOfColor(PawnColor color) {
+    int count = 0;
+    for(int row = 0; row < this->boardSize; row++){
+        for(int col = 0; col < this->boardSize; col++){
+            PawnPtr pawn = this->getPawnAt(Position(row, col));
+            if(pawn->getColor() == color) count++;
+        }
+    }
+    return count;
 }

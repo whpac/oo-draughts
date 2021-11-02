@@ -5,14 +5,14 @@
 
 class Pawn;
 
-#include "../board.hpp"
-#include "../position.hpp"
-
 enum PawnColor {
     black,
     white,
     no_pawn   // means no pawn at the field
 };
+
+#include "../board.hpp"
+#include "../position.hpp"
 
 class Pawn {
     protected: PawnColor color = no_pawn;

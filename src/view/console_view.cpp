@@ -21,4 +21,7 @@ void ConsoleView::displayBoard(Board& board){
         }
         printf("\n");
     }
+
+    printf("WHITE: %d\n", board.countPawnsOfColor(white));
+    printf("BLACK: %d\n", board.countPawnsOfColor(black));
 }
