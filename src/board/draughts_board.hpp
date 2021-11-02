@@ -22,11 +22,11 @@ class DraughtsBoard : public Board {
     public: bool movePawn(Position from, Position to) override;
 
     /**
-     * Kills all pawns along the move
+     * Kills all pawns along the move. Returns the number of pawns killed
      * @param from The beginning of the move
      * @param to The end of the move
      */
-    protected: void killPawnsAlongMove(Position from, Position to);
+    protected: int killPawnsAlongMove(Position from, Position to);
 };
 
 #endif

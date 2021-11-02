@@ -31,14 +31,22 @@ bool DraughtsBoard::isPlayableField(Position pos){
 }
 
 bool DraughtsBoard::movePawn(Position from, Position to) {
+    PawnColor currentPlayer = this->nextPlayer;
+
     if(!Board::movePawn(from, to)) return false;
-    this->killPawnsAlongMove(from, to);
+    int killed_pawns = this->killPawnsAlongMove(from, to);
+
+    if(killed_pawns > 0){
+        // Check if further move is possible. If so, prolong the current player's turn
+        this->nextPlayer = currentPlayer;
+    }
     return true;
 }
 
-void DraughtsBoard::killPawnsAlongMove(Position from, Position to) {
+int DraughtsBoard::killPawnsAlongMove(Position from, Position to) {
     int r_offset = to.getRow() - from.getRow();
     int c_offset = to.getCol() - from.getCol();
+    int killed_pawns = 0;
 
     // Skip both ends of the move
     for(int i = 1; i < abs(r_offset); i++){
@@ -46,6 +54,12 @@ void DraughtsBoard::killPawnsAlongMove(Position from, Position to) {
                 from.getRow() + i * (r_offset > 0 ? 1 : -1),
                 from.getCol() + i * (c_offset > 0 ? 1 : -1)
                 );
+        PawnPtr current_pawn = this->getPawnAt(middle);
+        if(Pawn::isEmpty(*current_pawn)) continue;
+
+        // Increase the killed pawns counter
+        killed_pawns++;
         this->setPawnAt(middle, EmptyField::makePtr());
     }
+    return killed_pawns;
 }
