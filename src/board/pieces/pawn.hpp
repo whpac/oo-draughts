@@ -39,6 +39,12 @@ public:
     /** Gets a pawn that this one can transform into */
     public: virtual PawnPtr getTransform() = 0;
 
+    /**
+     * Checks whether the pawn can kill a pawn
+     * @param pos The current pawn position
+     */
+    public: virtual bool canKill(Position pos) = 0;
+
     /** Checks whether the passed pawn represents an empty field */
     public: static bool isEmpty(Pawn& pawn);
 

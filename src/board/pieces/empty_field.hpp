@@ -17,6 +17,8 @@ class EmptyField : public Pawn {
     public: bool canTransform(Position pos) override;
 
     public: PawnPtr getTransform() override;
+
+    public: bool canKill(Position pos) override;
 };
 
 #endif

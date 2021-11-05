@@ -54,3 +54,21 @@ bool NormalPawn::canTransform(Position pos) {
 PawnPtr NormalPawn::getTransform() {
     return EmptyField::makePtr();
 }
+
+bool NormalPawn::canKill(Position pos) {
+    int d_col[] = {-1, -1, 1, 1};
+    int d_row[] = {-1, 1, -1, 1};
+
+    for(int i = 0; i < 4; i++){
+        PawnPtr neighbour = this->board->getPawnAt(
+                Position(pos.getRow() + d_row[i], pos.getCol() + d_col[i]));
+        PawnColor neighbour_color = neighbour->getColor();
+        if(Pawn::getOppositeColor(this->color) != neighbour_color) continue;
+
+        PawnPtr behind_neighbour = this->board->getPawnAt(
+                Position(pos.getRow() + 2*d_row[i], pos.getCol() + 2*d_col[i]));
+        if(Pawn::isEmpty(*behind_neighbour)) return true;
+    }
+
+    return false;
+}

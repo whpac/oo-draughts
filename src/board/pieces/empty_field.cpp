@@ -19,3 +19,7 @@ bool EmptyField::canTransform(Position pos) {
 PawnPtr EmptyField::getTransform() {
     return std::make_shared<EmptyField>(*this);
 }
+
+bool EmptyField::canKill(Position pos) {
+    return false;   // empty fields cannot kill anything
+}
