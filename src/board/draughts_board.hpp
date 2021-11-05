@@ -7,6 +7,8 @@ class DraughtsBoard;
 #include "pieces/normal_pawn.hpp"
 
 class DraughtsBoard : public Board {
+    protected: bool isMoveRestricted = false;
+    protected: Position forcedSourceField;
 
     public: explicit DraughtsBoard(int size);
 
@@ -27,6 +29,19 @@ class DraughtsBoard : public Board {
      * @param to The end of the move
      */
     protected: int killPawnsAlongMove(Position from, Position to);
+
+    /**
+     * Restricts the moved pawn to one at the specified field
+     */
+    protected: void restrictMoveTo(Position pos);
+
+    /** Lifts off the moved pawn restriction */
+    protected: void unrestrictMove();
+
+    /**
+     * Checks whether the source field is not restricted
+     */
+    protected: bool isSourceFieldPermitted(Position pos);
 };
 
 #endif

@@ -31,14 +31,18 @@ bool DraughtsBoard::isPlayableField(Position pos){
 }
 
 bool DraughtsBoard::movePawn(Position from, Position to) {
+    if(!this->isSourceFieldPermitted(from)) return false;
     PawnColor currentPlayer = this->nextPlayer;
 
     if(!Board::movePawn(from, to)) return false;
     int killed_pawns = this->killPawnsAlongMove(from, to);
 
     if(killed_pawns > 0){
-        // Check if further move is possible. If so, prolong the current player's turn
+        // TODO: Check if further kill is possible. If so, prolong the current player's turn
         this->nextPlayer = currentPlayer;
+        this->restrictMoveTo(to);
+    }else{
+        this->unrestrictMove();
     }
     return true;
 }
@@ -62,4 +66,18 @@ int DraughtsBoard::killPawnsAlongMove(Position from, Position to) {
         this->setPawnAt(middle, EmptyField::makePtr());
     }
     return killed_pawns;
+}
+
+void DraughtsBoard::restrictMoveTo(Position pos){
+    this->isMoveRestricted = true;
+    this->forcedSourceField = pos;
+}
+
+void DraughtsBoard::unrestrictMove() {
+    this->isMoveRestricted = false;
+}
+
+bool DraughtsBoard::isSourceFieldPermitted(Position pos) {
+    if(!this->isMoveRestricted) return true;
+    return pos == this->forcedSourceField;
 }
