@@ -38,12 +38,17 @@ bool DraughtsBoard::movePawn(Position from, Position to) {
     int killed_pawns = this->killPawnsAlongMove(from, to);
 
     if(killed_pawns > 0){
-        // TODO: Check if further kill is possible. If so, prolong the current player's turn
-        this->nextPlayer = currentPlayer;
-        this->restrictMoveTo(to);
-    }else{
-        this->unrestrictMove();
+        PawnPtr moved_pawn = this->getPawnAt(to);
+
+        // If the moved pawn can perform further kill, prolong the current turn
+        if(moved_pawn->canKill(to)) {
+            this->nextPlayer = currentPlayer;
+            this->restrictMoveTo(to);
+            return true;
+        }
     }
+
+    this->unrestrictMove();
     return true;
 }
 
