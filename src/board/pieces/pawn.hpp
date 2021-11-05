@@ -6,9 +6,11 @@
 class Pawn;
 
 enum PawnColor {
+    no_pawn,   // means no pawn at the field
+    out_of_bounds,
     black,
-    white,
-    no_pawn   // means no pawn at the field
+    white
+
 };
 
 #include "../board.hpp"

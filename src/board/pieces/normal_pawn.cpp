@@ -52,7 +52,7 @@ bool NormalPawn::canTransform(Position pos) {
 }
 
 PawnPtr NormalPawn::getTransform() {
-    return EmptyField::makePtr();
+    return EmptyField::makePtr(true);
 }
 
 bool NormalPawn::canKill(Position pos) {

@@ -5,7 +5,7 @@ Board::Board(int size){
     this->boardSize = size;
 
     for(int i = 0; i < size * size; i++){
-        PawnPtr p = EmptyField::makePtr();
+        PawnPtr p = EmptyField::makePtr(true);
         this->board.push_back(p);
     }
 }
@@ -18,7 +18,7 @@ int Board::getSize() const{
 
 PawnPtr Board::getPawnAt(Position pos){
     if(!this->isPositionWithinBounds(pos)){
-        return EmptyField::makePtr();
+        return EmptyField::makePtr(false);
     }
 
     int idx = this->positionToIndex(pos);
@@ -49,7 +49,7 @@ bool Board::movePawn(Position from, Position to) {
     }else{
         this->setPawnAt(to, pawn);
     }
-    this->setPawnAt(from, EmptyField::makePtr());
+    this->setPawnAt(from, EmptyField::makePtr(true));
 
     this->nextPlayer = Pawn::getOppositeColor(pawn->getColor());
 

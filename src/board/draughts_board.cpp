@@ -68,7 +68,7 @@ int DraughtsBoard::killPawnsAlongMove(Position from, Position to) {
 
         // Increase the killed pawns counter
         killed_pawns++;
-        this->setPawnAt(middle, EmptyField::makePtr());
+        this->setPawnAt(middle, EmptyField::makePtr(true));
     }
     return killed_pawns;
 }
