@@ -12,6 +12,8 @@ class DraughtsBoard : public Board {
 
     public: explicit DraughtsBoard(int size);
 
+    public: bool movePawn(Position from, Position to) override;
+
     /** Initializes the board with pawns */
     protected: void initialize();
 
@@ -20,8 +22,6 @@ class DraughtsBoard : public Board {
      * @param pos The position
      */
     protected: bool isPlayableField(Position pos) override;
-
-    public: bool movePawn(Position from, Position to) override;
 
     /**
      * Kills all pawns along the move. Returns the number of pawns killed
@@ -42,6 +42,12 @@ class DraughtsBoard : public Board {
      * Checks whether the source field is not restricted
      */
     protected: bool isSourceFieldPermitted(Position pos);
+
+    /**
+     * Checks if there is a pawn in a given color than can kill
+     * @param color The color of pawn to kill
+     */
+    protected: bool canAnyPawnKill(PawnColor color);
 };
 
 #endif
