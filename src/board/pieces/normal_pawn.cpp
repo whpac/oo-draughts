@@ -1,5 +1,5 @@
 #include "normal_pawn.hpp"
-#include "empty_field.hpp"
+#include "king_pawn.hpp"
 
 NormalPawn::NormalPawn(Board *board, PawnColor color) {
     this->board = board;
@@ -52,7 +52,8 @@ bool NormalPawn::canTransform(Position pos) {
 }
 
 PawnPtr NormalPawn::getTransform() {
-    return EmptyField::makePtr(true);
+    KingPawn king(this->board, this->color);
+    return king.toPtr();
 }
 
 bool NormalPawn::canKill(Position pos) {
