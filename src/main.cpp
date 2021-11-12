@@ -3,10 +3,10 @@
 #include "input/console_input.hpp"
 #include "input/commands/move_command.hpp"
 
-void performMove(Board& board, Command cmd);
+bool performMove(Board& board, Command cmd);
 
 int main(){
-    DraughtsBoard board = DraughtsBoard(8);
+    DraughtsBoard board = DraughtsBoard(6);
     ConsoleView console;
     ConsoleInput input;
 
@@ -16,7 +16,9 @@ int main(){
         Command cmd = input.getCommand();
         switch(cmd.getType()) {
             case CommandType::move:
-                performMove(board, cmd);
+                if(!performMove(board, cmd)){
+                    console.setMessage("The attempted move was not legal.");
+                }
                 break;
             case CommandType::undo:
                 break;
@@ -26,12 +28,14 @@ int main(){
             case CommandType::unknown:
                 break;
         }
+        // board.checkGameOver()
     }
 
     return 0;
 }
 
-void performMove(Board& board, Command cmd){
+bool performMove(Board& board, Command cmd){
     MoveCommand mv_cmd = (MoveCommand) cmd;
-    board.movePawn(mv_cmd.getFrom(), mv_cmd.getTo());
+    bool success = board.movePawn(mv_cmd.getFrom(), mv_cmd.getTo());
+    return success;
 }
