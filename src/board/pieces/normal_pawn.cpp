@@ -62,8 +62,7 @@ bool NormalPawn::canKill(Position pos) {
     for(int i = 0; i < 4; i++){
         PawnPtr neighbour = this->board->getPawnAt(
                 Position(pos.getRow() + d_row[i], pos.getCol() + d_col[i]));
-        PawnColor neighbour_color = neighbour->getColor();
-        if(Pawn::getOppositeColor(this->color) != neighbour_color) continue;
+        if(!this->isOpposite(neighbour)) continue;
 
         PawnPtr behind_neighbour = this->board->getPawnAt(
                 Position(pos.getRow() + 2*d_row[i], pos.getCol() + 2*d_col[i]));

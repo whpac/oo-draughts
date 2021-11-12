@@ -47,6 +47,8 @@ public:
      */
     public: virtual bool canKill(Position pos) = 0;
 
+    public: bool isOpposite(PawnPtr pawn);
+
     /** Checks whether the passed pawn represents an empty field */
     public: static bool isEmpty(Pawn& pawn);
 
