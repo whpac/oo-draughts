@@ -6,7 +6,7 @@
 bool performMove(Board& board, Command cmd);
 
 int main(){
-    DraughtsBoard board = DraughtsBoard(6);
+    DraughtsBoard board(6);
     ConsoleView console;
     ConsoleInput input;
 
@@ -28,7 +28,11 @@ int main(){
             case CommandType::unknown:
                 break;
         }
-        // board.checkGameOver()
+        if(board.isGameOver()){
+            console.setMessage("Game over! GRAY won.");
+            console.displayBoard(board);
+            cont = false;
+        }
     }
 
     return 0;

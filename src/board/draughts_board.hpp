@@ -14,6 +14,8 @@ class DraughtsBoard : public Board {
 
     public: bool movePawn(Position from, Position to) override;
 
+    public: bool isGameOver() override;
+
     /** Initializes the board with pawns */
     protected: void initialize();
 

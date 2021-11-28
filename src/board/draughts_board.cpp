@@ -100,3 +100,7 @@ bool DraughtsBoard::canAnyPawnKill(PawnColor color) {
     }
     return false;
 }
+
+bool DraughtsBoard::isGameOver() {
+    return false;
+}

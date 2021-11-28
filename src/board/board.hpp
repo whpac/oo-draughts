@@ -72,6 +72,9 @@ public:
 
     /** Returns the color of the next player */
     public: PawnColor getNextPlayer();
+
+    /** Checks whether the game is over */
+    public: virtual bool isGameOver() = 0;
 };
 
 #endif
