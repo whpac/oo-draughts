@@ -10,7 +10,12 @@ enum PawnColor {
     out_of_bounds,
     black,
     white
+};
 
+enum PawnType {
+    normal,
+    king,
+    other   // for special ones, like EmptyField
 };
 
 #include "../board.hpp"
@@ -19,6 +24,7 @@ enum PawnColor {
 class Pawn {
     protected: PawnColor color = no_pawn;
     protected: Board* board = nullptr;
+    protected: PawnType type = other;
 
 public:
     /**
@@ -31,6 +37,9 @@ public:
 
     /** Returns the pawn color */
     public: PawnColor getColor();
+
+    /** Returns the pawn type */
+    public: PawnType getType();
 
     /**
      * Checks whether the pawn can transform into another

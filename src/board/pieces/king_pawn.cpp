@@ -3,6 +3,7 @@
 KingPawn::KingPawn(Board *board, PawnColor color) {
     this->board = board;
     this->color = color;
+    this->type = king;
 }
 
 bool KingPawn::canBeMoved(Position from, Position to) {

@@ -4,6 +4,7 @@
 NormalPawn::NormalPawn(Board *board, PawnColor color) {
     this->board = board;
     this->color = color;
+    this->type = normal;
 }
 
 bool NormalPawn::canBeMoved(Position from, Position to) {

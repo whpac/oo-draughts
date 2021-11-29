@@ -4,6 +4,10 @@ PawnColor Pawn::getColor(){
     return this->color;
 }
 
+PawnType Pawn::getType() {
+    return this->type;
+}
+
 bool Pawn::isEmpty(Pawn& pawn) {
     return pawn.getColor() == PawnColor::no_pawn;
 }
