@@ -56,7 +56,11 @@ public:
      */
     public: virtual bool canKill(Position pos) = 0;
 
-    public: bool isOpposite(PawnPtr pawn);
+    /**
+     * Checks whether the passed pawn is of an opposite color
+     * @param pawn The pawn to check
+     */
+    public: bool isOpposite(const PawnPtr& pawn);
 
     /** Checks whether the passed pawn represents an empty field */
     public: static bool isEmpty(Pawn& pawn);

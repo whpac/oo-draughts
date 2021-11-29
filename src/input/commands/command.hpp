@@ -10,6 +10,7 @@ enum CommandType {
     quit
 };
 
+/** A base class for all user commands */
 class Command {
     protected: CommandType type = unknown;
     protected: Position from;

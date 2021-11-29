@@ -18,6 +18,7 @@ int Position::getCol() const{
     return this->col;
 }
 
+// Positions are equal when both coordinates are equal
 bool Position::operator==(Position p) const {
     return this->row == p.row && this->col == p.col;
 }

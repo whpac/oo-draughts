@@ -12,7 +12,7 @@ bool Pawn::isEmpty(Pawn& pawn) {
     return pawn.getColor() == PawnColor::no_pawn;
 }
 
-bool Pawn::isOpposite(PawnPtr pawn) {
+bool Pawn::isOpposite(const PawnPtr& pawn) {
     PawnColor opposite = Pawn::getOppositeColor(this->color);
     return opposite == pawn->getColor();
 }

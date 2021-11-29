@@ -61,11 +61,14 @@ bool NormalPawn::canKill(Position pos) {
     int d_col[] = {-1, -1, 1, 1};
     int d_row[] = {-1, 1, -1, 1};
 
+    // Check the four neighbour fields for pawns to kill
     for(int i = 0; i < 4; i++){
+        // Neighbour must be of the opposite color
         PawnPtr neighbour = this->board->getPawnAt(
                 Position(pos.getRow() + d_row[i], pos.getCol() + d_col[i]));
         if(!this->isOpposite(neighbour)) continue;
 
+        // And there must be an empty space behind
         PawnPtr behind_neighbour = this->board->getPawnAt(
                 Position(pos.getRow() + 2*d_row[i], pos.getCol() + 2*d_col[i]));
         if(Pawn::isEmpty(*behind_neighbour)) return true;

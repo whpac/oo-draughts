@@ -35,14 +35,18 @@ void Board::setPawnAt(Position pos, PawnPtr pawn){
 
 
 bool Board::movePawn(Position from, Position to) {
+    // Moved pawn must be of the appropriate color
     PawnPtr pawn = this->getPawnAt(from);
     if(pawn->getColor() != this->nextPlayer) return false;
 
-    if(pawn->getColor() == no_pawn) return false;
+    // Source field must contain a pawn and destination must be playable
+    if(Pawn::isEmpty(*pawn)) return false;
     if(!this->isPlayableField(to)) return false;
 
+    // The move must also be valid for this type of pawn
     if(!pawn->canBeMoved(from, to)) return false;
 
+    // Check for possible transforms. If available, change the pawn
     if(pawn->canTransform(to)){
         PawnPtr new_pawn = pawn->getTransform();
         this->setPawnAt(to, new_pawn);
@@ -51,6 +55,7 @@ bool Board::movePawn(Position from, Position to) {
     }
     this->setPawnAt(from, EmptyField::makePtr(true));
 
+    // Now it's the opponent's turn
     this->nextPlayer = Pawn::getOppositeColor(pawn->getColor());
 
     return true;

@@ -31,13 +31,18 @@ bool DraughtsBoard::isPlayableField(Position pos){
 }
 
 bool DraughtsBoard::movePawn(Position from, Position to) {
+    // In case the source is restricted, check it
     if(!this->isSourceFieldPermitted(from)) return false;
 
+    // To make a kill is obligatory; if any pawn can kill, this one must be able to too
     PawnPtr moved_pawn = this->getPawnAt(from);
     if(this->canAnyPawnKill(this->nextPlayer) != moved_pawn->canKill(from)) return false;
 
+    // Save the current player to be used later
     PawnColor currentPlayer = this->nextPlayer;
 
+    // Attempt to move; basic checks are performed there too.
+    // This call can alter the nextPlayer field
     if(!Board::movePawn(from, to)) return false;
     int killed_pawns = this->killPawnsAlongMove(from, to);
 
@@ -50,6 +55,7 @@ bool DraughtsBoard::movePawn(Position from, Position to) {
         }
     }
 
+    // Make sure the source field is not restricted anymore
     this->unrestrictMove();
     return true;
 }
@@ -90,6 +96,8 @@ bool DraughtsBoard::isSourceFieldPermitted(Position pos) {
 }
 
 bool DraughtsBoard::canAnyPawnKill(PawnColor color) {
+    // Iterate over the board and check if any pawn
+    // of the specified color can kill
     for(int row = 0; row < this->getSize(); row++){
         for(int col = 0; col < this->getSize(); col++){
             Position pos(row, col);
