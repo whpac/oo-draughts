@@ -16,6 +16,8 @@ class DraughtsBoard : public Board {
 
     public: bool isGameOver() override;
 
+    public: PawnColor whoWon() override;
+
     /** Initializes the board with pawns */
     protected: void initialize();
 

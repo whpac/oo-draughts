@@ -75,6 +75,9 @@ public:
 
     /** Checks whether the game is over */
     public: virtual bool isGameOver() = 0;
+
+    /** Returns color of a player who won the game */
+    public: virtual PawnColor whoWon() = 0;
 };
 
 #endif

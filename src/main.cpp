@@ -29,7 +29,9 @@ int main(){
                 break;
         }
         if(board.isGameOver()){
-            console.setMessage("Game over! GRAY won.");
+            PawnColor winner = board.whoWon();
+            if(winner == white) console.setMessage("Game over! WHITE won.");
+            else if(winner == black) console.setMessage("Game over! BLACK won.");
             console.displayBoard(board);
             cont = false;
         }

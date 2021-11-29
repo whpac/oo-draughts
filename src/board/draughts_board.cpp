@@ -102,5 +102,17 @@ bool DraughtsBoard::canAnyPawnKill(PawnColor color) {
 }
 
 bool DraughtsBoard::isGameOver() {
-    return false;
+    int white = this->countPawnsOfColor(PawnColor::white);
+    int black = this->countPawnsOfColor(PawnColor::black);
+
+    return white == 0 || black == 0;
+}
+
+PawnColor DraughtsBoard::whoWon() {
+    int white = this->countPawnsOfColor(PawnColor::white);
+    int black = this->countPawnsOfColor(PawnColor::black);
+
+    if(white == 0) return PawnColor::white;
+    if(black == 0) return PawnColor::black;
+    return PawnColor::no_pawn;
 }
