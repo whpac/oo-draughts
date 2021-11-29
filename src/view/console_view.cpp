@@ -13,13 +13,14 @@ void ConsoleView::displayBoard(Board& board){
         for(int col = 0; col < size; col++){
             Position pos(row, col);
             PawnPtr p = board.getPawnAt(pos);
+            PawnType type = p->getType();
 
             switch(p->getColor()){
                 case white:
-                    cout << "w";
+                    cout << (type == king ? "W" : "w");
                     break;
                 case black:
-                    cout << "b";
+                    cout << (type == king ? "B" : "b");
                     break;
                 default:
                     cout << ".";
