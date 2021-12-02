@@ -6,7 +6,7 @@
 enum CommandType {
     unknown,
     move,
-    undo,
+    help,
     quit
 };
 

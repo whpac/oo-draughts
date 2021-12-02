@@ -20,12 +20,14 @@ int main(){
                     console.setMessage("The attempted move was not legal.");
                 }
                 break;
-            case CommandType::undo:
+            case CommandType::help:
+                // console.displayHelp();
                 break;
             case CommandType::quit:
                 cont = false;
                 break;
             case CommandType::unknown:
+                // console.unknownRequest();
                 break;
         }
         if(board.isGameOver()){
