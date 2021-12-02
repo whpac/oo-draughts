@@ -7,6 +7,7 @@
 
 Command ConsoleInput::getCommand() {
     char c;
+    std::cout << "> ";
     std::cin >> c;
 
     switch(c){
