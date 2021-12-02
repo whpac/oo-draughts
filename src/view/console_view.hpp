@@ -26,6 +26,16 @@ class ConsoleView {
      */
     public: void clearMessage();
 
+    /**
+     * Displays the manual
+     */
+    public: void displayHelp();
+
+    /**
+     * Responds to an unknown command
+     */
+    public: void respondToUnknownCommand();
+
 };
 
 #endif

@@ -10,24 +10,26 @@ int main(){
     ConsoleView console;
     ConsoleInput input;
 
+    console.displayBoard(board);
     bool cont = true;
     while(cont){
-        console.displayBoard(board);
         Command cmd = input.getCommand();
         switch(cmd.getType()) {
             case CommandType::move:
                 if(!performMove(board, cmd)){
                     console.setMessage("The attempted move was not legal.");
+                }else{
+                    console.displayBoard(board);
                 }
                 break;
             case CommandType::help:
-                // console.displayHelp();
+                console.displayHelp();
                 break;
             case CommandType::quit:
                 cont = false;
                 break;
             case CommandType::unknown:
-                // console.unknownRequest();
+                console.respondToUnknownCommand();
                 break;
         }
         if(board.isGameOver()){

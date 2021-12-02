@@ -58,3 +58,16 @@ void ConsoleView::setMessage(string new_message) {
 void ConsoleView::clearMessage() {
     this->message = "";
 }
+
+void ConsoleView::displayHelp() {
+    cout << "Available commands:" << endl;
+    cout << "    h - print this information" << endl;
+    cout << "    m <src row> <src col> <dest row> <dest col> - move a pawn" << endl;
+    cout << "    q - quit the game" << endl;
+    cout << "\033[3mIf you were looking to find the game rules, they are not here.\033[23m" << endl;
+}
+
+void ConsoleView::respondToUnknownCommand() {
+    cout << "\033[31;1mOutstanding idea! I wish I could understand it.\033[0m" << endl;
+    cout << "For a humble list of commands if know, type 'h'." << endl;
+}
