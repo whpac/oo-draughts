@@ -15,9 +15,24 @@ void ConsoleView::displayBoard(Board& board){
     cout << "\033[1;30mgithub.com/whpac/oo-draughts\033[0m";   // Print in gray
     cout << endl << endl << endl;
 
+    // Then the column numbers
+    if(board.getSize() > 10){
+        printf("   ");
+        for(int i = 0; i < board.getSize(); i++){
+            if(i < 10) printf(" ");
+            else printf("%d", i/10);
+        }
+    }
+    printf("\n   ");
+    for(int i = 0; i < board.getSize(); i++) printf("%d", i % 10);
+    printf("\n  +");
+    for(int i = 0; i < board.getSize(); i++) printf("-");
+    printf("\n");
+
     // Then the board
     int size = board.getSize();
     for(int row = 0; row < size; row++){
+        printf("%2d|", row);
         for(int col = 0; col < size; col++){
             Position pos(row, col);
             PawnPtr p = board.getPawnAt(pos);
@@ -39,13 +54,16 @@ void ConsoleView::displayBoard(Board& board){
                     break;
             }
         }
+
+        // On the right of the middle rows print the pawn counts
+        if(row + 1 == size / 2) cout << "    WHITE: " << board.countPawnsOfColor(white);
+        if(row == size / 2) cout << "    BLACK: " << board.countPawnsOfColor(black);
+
         cout << endl;
     }
 
-    // And finally some metadata
-    cout << "WHITE: " << board.countPawnsOfColor(white) << endl;
-    cout << "BLACK: " << board.countPawnsOfColor(black) << endl;
-    cout
+    // And finally the next player
+    cout << endl
         << "Next player: "
         << (board.getNextPlayer() == white ? "WHITE" : "BLACK") << endl;
 
@@ -73,5 +91,5 @@ void ConsoleView::displayHelp() {
 
 void ConsoleView::respondToUnknownCommand() {
     cout << "\033[31;1mOutstanding idea! I wish I could understand it.\033[0m" << endl;
-    cout << "For a humble list of commands if know, type 'h'." << endl;
+    cout << "For a humble list of commands I know, type 'h'." << endl;
 }
