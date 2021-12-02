@@ -6,7 +6,7 @@
 bool performMove(Board& board, Command cmd);
 
 int main(){
-    DraughtsBoard board(6);
+    DraughtsBoard board(8);
     ConsoleView console;
     ConsoleInput input;
 
@@ -18,9 +18,8 @@ int main(){
             case CommandType::move:
                 if(!performMove(board, cmd)){
                     console.setMessage("The attempted move was not legal.");
-                }else{
-                    console.displayBoard(board);
                 }
+                console.displayBoard(board);
                 break;
             case CommandType::help:
                 console.displayHelp();
