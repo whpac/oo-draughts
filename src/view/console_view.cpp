@@ -31,7 +31,11 @@ void ConsoleView::displayBoard(Board& board){
                     cout << (type == king ? "B" : "b");
                     break;
                 default:
-                    cout << ".";
+                    if(board.isPlayableField(pos)){
+                        cout << "\033[1;30m*\033[0m";
+                    }else {
+                        cout << " ";
+                    }
                     break;
             }
         }

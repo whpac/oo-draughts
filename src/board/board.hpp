@@ -62,7 +62,7 @@ public:
      * Checks whether the given field is legal in the game
      * @param pos The position
      */
-    protected: virtual bool isPlayableField(Position pos);
+    public: virtual bool isPlayableField(Position pos);
 
     /**
      * Counts pawns of the specified color

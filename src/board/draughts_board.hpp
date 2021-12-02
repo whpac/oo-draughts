@@ -25,7 +25,7 @@ class DraughtsBoard : public Board {
      * Checks whether the given field is legal in the game
      * @param pos The position
      */
-    protected: bool isPlayableField(Position pos) override;
+    public: bool isPlayableField(Position pos) override;
 
     /**
      * Kills all pawns along the move. Returns the number of pawns killed
