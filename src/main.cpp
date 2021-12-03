@@ -2,6 +2,7 @@
 #include "view/console_view.hpp"
 #include "input/console_input.hpp"
 #include "input/commands/move_command.hpp"
+#include<stdexcept>
 
 bool performMove(Board& board, Command cmd);
 
@@ -44,7 +45,11 @@ int main(){
 }
 
 bool performMove(Board& board, Command cmd){
-    MoveCommand mv_cmd = (MoveCommand) cmd;
-    bool success = board.movePawn(mv_cmd.getFrom(), mv_cmd.getTo());
-    return success;
+    try {
+        MoveCommand mv_cmd = MoveCommand(cmd);
+        bool success = board.movePawn(mv_cmd.getFrom(), mv_cmd.getTo());
+        return success;
+    }catch(std::domain_error& e){
+        return false;
+    }
 }
