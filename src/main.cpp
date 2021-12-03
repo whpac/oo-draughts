@@ -6,8 +6,14 @@
 
 bool performMove(Board& board, Command cmd);
 
-int main(){
-    DraughtsBoard board(8);
+int main(int argc, char** argv){
+    int size = 8;
+
+    if(argc >= 2){
+        size = strtol(argv[1], nullptr, 0);
+    }
+
+    DraughtsBoard board(size);
     ConsoleView console;
     ConsoleInput input;
 
